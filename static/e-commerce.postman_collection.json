@@ -1,0 +1,471 @@
+{
+	"info": {
+		"_postman_id": "b8360d7d-aaf5-445e-8dbc-a8cac6bede76",
+		"name": "e-commerce",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "44394765"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Create User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"name\",\n    \"surname\": \"Surname\",\n    \"email\": \"email@email.es\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{gateway}}{{UserMapping}}",
+							"host": [
+								"{{gateway}}{{UserMapping}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"name\":\"Antonio\",\n\"surname\":\"de Sotomayor Rodriguez\",\n\"email\":\"antonio.deSotomayor@example.es\"\n}\n// cambiar el id en la url\n// Si no existe el id, lanza excepcion",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{gateway}}{{UserMapping}}/update/3",
+							"host": [
+								"{{gateway}}{{UserMapping}}"
+							],
+							"path": [
+								"update",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find User by Email",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"antonio.deSotomayor@example.es\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{gateway}}{{UserMapping}}/findUser",
+							"host": [
+								"{{gateway}}{{UserMapping}}"
+							],
+							"path": [
+								"findUser"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{gateway}}{{UserMapping}}/delete/4",
+							"host": [
+								"{{gateway}}{{UserMapping}}"
+							],
+							"path": [
+								"delete",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Product",
+			"item": [
+				{
+					"name": "Create new Product",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"name\",\n  \"description\": \"description\",\n  \"price\": 10.00,\n  \"quantity\": 1,\n  \"typeProduct\": \"ELECTRONICS\"\n}\n\n    // typeProduct posibles\n    // ELECTRONICS,\n    // CLOTHING,\n    // HOME_APPLIANCES,\n    // BOOKS,\n    // TOYS,\n   //  FURNITURE,\n    // SPORTS_EQUIPMENT,",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{gateway}}{{productMapping}}",
+							"host": [
+								"{{gateway}}{{productMapping}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "all Products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{gateway}}{{productMapping}}/all",
+							"host": [
+								"{{gateway}}{{productMapping}}"
+							],
+							"path": [
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "find by Type of Product",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{gateway}}{{productMapping}}/find/electronics",
+							"host": [
+								"{{gateway}}{{productMapping}}"
+							],
+							"path": [
+								"find",
+								"electronics"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Product",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"name\":\"Play Station 4\",\n   \"description\":\"Consola play 4\",\n   \"price\":229.99,\n   \"quantity\":4,\n   \"typeProduct\":\"ELECTRONICS\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{gateway}}{{productMapping}}/update/2",
+							"host": [
+								"{{gateway}}{{productMapping}}"
+							],
+							"path": [
+								"update",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Product",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{gateway}}{{productMapping}}/delete/2",
+							"host": [
+								"{{gateway}}{{productMapping}}"
+							],
+							"path": [
+								"delete",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "OrderItem",
+			"item": [
+				{
+					"name": "Create new OrderItem",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response time is within an acceptable range\", function () {",
+									"  pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response has the required fields\", function () {",
+									"    const responseData = pm.response.json();",
+									"",
+									"    pm.expect(responseData).to.be.an('object');",
+									"    pm.expect(responseData.id).to.exist;",
+									"    pm.expect(responseData.userId).to.exist;",
+									"    pm.expect(responseData.orderDate).to.exist;",
+									"    pm.expect(responseData.totalAmount).to.exist;",
+									"    pm.expect(responseData.orderItems).to.exist;",
+									"});",
+									"",
+									"",
+									"pm.test(\"OrderDate is in a valid date format\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData).to.be.an('object');",
+									"    pm.expect(responseData.orderDate).to.match(/^\\d{4}-\\d{2}-\\d{2}$/);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Each order item should have id, userId, productId, quantity, and totalPrice\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData.orderItems).to.be.an('array');",
+									"    responseData.orderItems.forEach(function(item) {",
+									"        pm.expect(item).to.be.an('object');",
+									"        pm.expect(item).to.have.property('id');",
+									"        pm.expect(item).to.have.property('userId');",
+									"        pm.expect(item).to.have.property('productId');",
+									"        pm.expect(item).to.have.property('quantity');",
+									"        pm.expect(item).to.have.property('totalPrice');",
+									"    });",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"customerEmail\":\"antonio.deSotomayor@example.es\",\n\"productId\":1,\n\"quantity\":2\n\n}\n\n// la creaccion de un OrderItem debe de estar asociada  a una Order creada",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{gateway}}{{OrderItemMapping}}/10/items",
+							"host": [
+								"{{gateway}}{{OrderItemMapping}}"
+							],
+							"path": [
+								"10",
+								"items"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "find OrderItem by Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{gateway}}{{OrderItemMapping}}/findbyid/1",
+							"host": [
+								"{{gateway}}{{OrderItemMapping}}"
+							],
+							"path": [
+								"findbyid",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update OrderItem",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"productId\": 1,\n    \"quantity\": 5\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{gateway}}{{OrderItemMapping}}/update/1",
+							"host": [
+								"{{gateway}}{{OrderItemMapping}}"
+							],
+							"path": [
+								"update",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete orderItem",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{gateway}}{{OrderItemMapping}}/delete/1",
+							"host": [
+								"{{gateway}}{{OrderItemMapping}}"
+							],
+							"path": [
+								"delete",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Order",
+			"item": [
+				{
+					"name": "New Order",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"customerEmail\": \"diego.serrano@example.es\",\n    \"products\": [\n        {\n            \"productId\": 3,\n            \"quantity\": 1\n        },\n        {\n            \"productId\": 4,\n            \"quantity\": 2\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{gateway}}{{OrderMapping}}",
+							"host": [
+								"{{gateway}}{{OrderMapping}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "find All",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{gateway}}{{OrderMapping}}/findAll",
+							"host": [
+								"{{gateway}}{{OrderMapping}}"
+							],
+							"path": [
+								"findAll"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "gateway",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "productMapping",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "UserMapping",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "OrderMapping",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "OrderItemMapping",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
