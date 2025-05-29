@@ -38,7 +38,7 @@ Imagen UML Proyecto
 
 ## Instrucciones de Instalación y Ejecución
 1. Clonar el repositorio.
-2. Configurar las bases de datos y variables de entorno para cada microservicio.
+2. Configurar las bases de datos 
 3. Ejecutar Eureka Server (`/eureka-server`).
 4. Ejecutar API Gateway (`/api-gateway`).
 5. Ejecutar otros microservicios en el orden que prefieras.
