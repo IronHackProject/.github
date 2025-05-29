@@ -39,10 +39,11 @@ Imagen UML Proyecto
 ## Instrucciones de Instalación y Ejecución
 1. Clonar el repositorio.
 2. Configurar las bases de datos 
-3. Ejecutar Eureka Server (`/eureka-server`).
-4. Ejecutar API Gateway (`/api-gateway`).
+3. Ejecutar Eureka Server 
+4. Ejecutar API Gateway
 5. Ejecutar otros microservicios en el orden que prefieras.
-6. Probar con Postman usando la colección disponible en `/static/e-commerce.postman_collection.json`.
+6. Probar con Postman usando la colección disponible en el repositorio `.github/static/e-commerce.postman_collection.
+json`.
 
 ## Gestión de Tareas
 El proyecto se gestiona con Trello y puede consultarse en:  
