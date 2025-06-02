@@ -30,6 +30,9 @@ Incluye múltiples servicios independientes que se comunican mediante Feign y ut
 ![UML_General.png](../static/UML_General.png))  
 Imagen UML Proyecto
 
+## Enlace a la Collection de Postman
+[Collection](../static/e-ecommerce.postman_collection.json)
+
 ## Requisitos para Ejecutar el Proyecto
 - Java 21 o superior
 - Maven
