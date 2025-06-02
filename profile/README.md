@@ -69,6 +69,8 @@ El proyecto se gestiona con Trello y puede consultarse en:
 
 
 ---
+## Enlace a la Presentación
+[e-commerce](https://docs.google.com/presentation/d/1EFOl62I8_-0BbTv7zDkMNcjHWulOWwlyTAvnHPrRZsE/edit?usp=sharing)
 
 ## Autor
 - **Nombre:** [DevJerryX](https://github.com/planetWeb252)
